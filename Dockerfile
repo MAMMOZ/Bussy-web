@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 5000
 
 # รันคำสั่ง `npm run dev --host` เพื่อเริ่มเซิร์ฟเวอร์ Svelte
-CMD ["npm", "run", "dev", "--", "--host"]
+CMD ["npm", "run", "dev"]
