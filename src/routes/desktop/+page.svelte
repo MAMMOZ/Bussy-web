@@ -54,7 +54,7 @@
 
   async function fetchBotData() {
     try {
-      const response = await fetch(`http://110.164.203.137:3000/bot`, {
+      const response = await fetch(`http://localhost:3000/bot`, {
         method: "POST", // ใช้ POST method
         headers: {
           "Content-Type": "application/json", // ระบุว่า body เป็น JSON
@@ -100,7 +100,7 @@
         <h3 class="text-white mb-2">Gems</h3>
         <img class="w-10" src="https://db.biggames.io/submenu/economy.png?game=ps99" alt="" srcset="">
       </div>
-      <p class="text-white text-4xl font-bold">20.7M</p>
+      <p class="text-white text-4xl font-bold">{summary.total_gem}</p>
       <p class="text-white">Pure</p>
     </div>
     <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">
@@ -108,7 +108,7 @@
         <h3 class="text-white mb-2">Huge</h3>
         <img class="w-10" src="https://db.biggames.io/submenu/pets.png?game=ps99" alt="" srcset="">
       </div>
-      <p class="text-white text-4xl font-bold">509</p>
+      <p class="text-white text-4xl font-bold">{summary.total_huge}</p>
       <p class="text-white">Each</p>
     </div>
     <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">
@@ -116,7 +116,7 @@
         <h3 class="text-white mb-2">RAP</h3>
         <img class="w-10" src="https://db.biggames.io/logo.svg?game=ps99" alt="" srcset="">
       </div>
-      <p class="text-white text-4xl font-bold">7M</p>
+      <p class="text-white text-4xl font-bold">{summary.rap}</p>
       <p class="text-white">Gem</p>
     </div>
     <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">
@@ -124,7 +124,7 @@
         <h3 class="text-white mb-2">Egg</h3>
         <img class="sm:w-auto w-9 h-10" src="https://db.biggames.io/_next/image?url=https%3A%2F%2Fbiggamesapi.io%2Fimage%2F17846766229&w=128&q=75" alt="" srcset="">
       </div>
-      <p class="text-white text-4xl font-bold">20</p>
+      <p class="text-white text-4xl font-bold">{summary.total_egg}</p>
       <p class="text-white">Each</p>
     </div>
   </div>
@@ -135,42 +135,42 @@
     <div class="bg-[#222213] p-6 rounded-xl">
       <p class="text-sm font-bold flex items-center ">
         <span class="text-white px-3" id="last-updated-serven"
-          >Shiny RB : 15</span
+          >Shiny RB : {summary.Shiny_RB}</span
         >
       </p>
     </div>
     <div class="bg-[#222213] p-6 rounded-xl">
       <p class="text-sm font-bold flex items-center">
         <span class="text-white px-3" id="last-updated-god"
-          >Shiny G : 0</span
+          >Shiny G : {summary.Shiny_G}</span
         >
       </p>
     </div>
     <div class="bg-[#222213]  p-6 rounded-xl">
       <p class="text-sm font-bold flex items-center">
         <span class="text-white px-3" id="last-updated-cdk"
-          >Shiny : 0</span
+          >Shiny : {summary.Shiny}</span
         >
       </p>
     </div>
     <div class="bg-[#222213] p-6 rounded-xl">
       <p class="text-sm font-bold flex items-center">
         <span class="text-white px-3" id="last-updated-sa"
-          >Rainbow : 0</span
+          >Rainbow : {summary.Rainbow}</span
         >
       </p>
     </div>
     <div class="bg-[#222213] p-6 rounded-xl">
       <p class="text-sm font-bold flex items-center">
         <span class="text-white px-3" id="last-updated-mirror"
-          >Golden : 5</span
+          >Golden : {summary.Golden}</span
         >
       </p>
     </div>
     <div class="bg-[#222213] p-6 rounded-xl">
       <p class="text-sm font-bold flex items-center">
         <span class="text-white px-3" id="last-updated-mirror"
-          >Normal : 10</span
+          >Normal : {summary.Normal}</span
         >
       </p>
     </div>
@@ -231,10 +231,10 @@
               <td class="py-2 px-4">{getEmojiByLastUpdated(item.updatedAt)}</td>
               <td class="py-2 px-4 font-medium text-yellow-300">{item.account}</td>
               <td class="py-2 px-4 text-yellow-300">{item.rank}</td>
-              <td class="py-2 px-4 text-yellow-300">{item.rebirth}</td>
-              <td class="py-2 px-4 text-yellow-300">{item.diamon}</td>
-              <td class="py-2 px-4 text-yellow-300">{item.titanic}</td>
-              <td class="py-2 px-4 text-yellow-300">{item.item}</td>
+              <td class="py-2 px-4 text-yellow-300">{item.Rebirth}</td>
+              <td class="py-2 px-4 text-yellow-300">{item.gem}</td>
+              <td class="py-2 px-4 text-yellow-300">{item.huge_type}</td>
+              <td class="py-2 px-4 text-yellow-300">{item.egg}</td>
               <td class="py-2 px-4 text-yellow-200">{timeAgo(item.updatedAt)}</td>
             </tr>
           {/each}

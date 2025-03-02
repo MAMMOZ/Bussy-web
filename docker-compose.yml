@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  svelte:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
