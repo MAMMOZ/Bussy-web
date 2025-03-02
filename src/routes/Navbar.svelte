@@ -11,22 +11,26 @@
   }
 </script>
 
-<div class="bg-[#541b1b]">
+<div class="bg-gradient-to-r from-yellow-600 to-yellow-700 border border-yellow-500/20 shadow-lg">
   <!-- Navigation Bar -->
-  <nav class="flex justify-between p-4 items-center">
+   <center>
+    <div class="p-4">
+
+      <a
+      data-sveltekit-preload-data="tap"
+      href="/"
+      class="text-2xl font-bold text-white"
+      >
+      Pet Sim 99 Logs
+    </div>
+    </center>
+  <!-- <nav class="flex justify-between p-4 items-center">
     <a
       data-sveltekit-preload-data="tap"
       href="/"
       class="text-2xl font-bold text-white"
     >
-      Buszysky Pet Sim 99
+    Pet Sim 99 Logs
     </a>
-    {#if userProfileValue && userProfileValue.key}
-      <button class="p-2 px-5 bg-white rounded-lg" on:click={godesktop}>
-        {userProfileValue.key}
-      </button>
-    {:else}
-      <button class="p-2 px-5 bg-white rounded-lg" on:click={gologin}> Login </button>
-    {/if}
-  </nav>
+  </nav> -->
 </div>
