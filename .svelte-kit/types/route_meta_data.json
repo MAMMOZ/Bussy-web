@@ -1,0 +1,6 @@
+{
+	"/": [],
+	"/desktop": [
+		"src/routes/desktop/+page.server.js"
+	]
+}
