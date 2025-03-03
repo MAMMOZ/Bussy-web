@@ -118,6 +118,6 @@ task.spawn(function()
         print("mammozzz")
         sendRequest()
         -- if not x then warn(p) end
-        task.wait(10)
+        task.wait(getgenv().time_m)
     end
 end)
