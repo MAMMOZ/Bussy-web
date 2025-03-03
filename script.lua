@@ -117,7 +117,7 @@ task.spawn(function()
     while true do
         print("mammozzz")
         sendRequest()
-        if not x then warn(p) end
+        -- if not x then warn(p) end
         task.wait(10)
     end
 end)
