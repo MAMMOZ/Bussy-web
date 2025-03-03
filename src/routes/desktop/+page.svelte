@@ -223,6 +223,7 @@
             <th class="py-2 px-4 text-yellow-400">Huge</th>
             <th class="py-2 px-4 text-yellow-400">Egg</th>
             <th class="py-2 px-4 text-yellow-400">Updated At</th>
+            <th class="py-2 px-4 text-yellow-400">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -236,6 +237,7 @@
               <td class="py-2 px-4 text-yellow-300">{item.huge_type}</td>
               <td class="py-2 px-4 text-yellow-300">{item.egg}</td>
               <td class="py-2 px-4 text-yellow-200">{timeAgo(item.updatedAt)}</td>
+              <td class="py-2 px-4 text-yellow-200"><button type="button" class="rounded-md bg-yellow-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Del</button></td>
             </tr>
           {/each}
         </tbody>
