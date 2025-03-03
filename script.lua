@@ -41,6 +41,7 @@ function getpet()
 
     for _, v in pairs(pet) do
         local found = "None"
+        local found_sh = false
 
         for j, k in pairs(v) do
             if string.find(v.id, "^Huge") then
@@ -48,12 +49,14 @@ function getpet()
                     found = "Gold"
                 elseif k == 2 then
                     found = "Rainbow"
+                elseif k == true then
+                    found_sh = true
                 end
             end
         end
 
         if string.find(v.id, "^Huge") then
-            table.insert(petTable, { type = found, id = v.id })
+            table.insert(petTable, { type = found, sh = found_sh, id = v.id })
             hugeCount = hugeCount + 1
         end
     end

@@ -52,9 +52,42 @@
     }
   }
 
+  function getscript() {
+    const text = `
+    getgenv().time_m = 10
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/MAMMOZ/Bussy-web/refs/heads/main/script.lua"))()
+    `;
+
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        console.log("ข้อความถูกคัดลอกไปยังคลิปบอร์ดแล้ว!");
+      })
+      .catch((err) => {
+        console.error("ไม่สามารถคัดลอกข้อความได้: ", err);
+      });
+  }
+
+  async function deleall() {
+    try {
+      const response = await fetch(`http://110.164.203.137:3000/deleall`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const newData = await response.json();
+      console.log(newData);
+      
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
+
   async function fetchBotData() {
     try {
-      const response = await fetch(`http://localhost:3000/bot`, {
+      const response = await fetch(`http://110.164.203.137:3000/bot`, {
         method: "POST", // ใช้ POST method
         headers: {
           "Content-Type": "application/json", // ระบุว่า body เป็น JSON
@@ -174,7 +207,30 @@
         >
       </p>
     </div>
-    
+  </div>
+
+  <div class="p-6">
+    <div class="flex justify-end items-center">
+      <span class="isolate inline-flex rounded-md shadow-sm">
+        <button
+          type="button"
+          class="relative inline-flex items-center rounded-l-md text-white bg-yellow-800 px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-yellow-300 focus-visible:outline hover:bg-yellow-500 focus-visible:outline-offset-2 focus-visible:outline-yellow-800"
+          >⚙️Setting</button
+        >
+        <button
+          type="button"
+          on:click={deleall}
+          class="relative -ml-px inline-flex items-center text-white bg-yellow-800 px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-yellow-300 focus-visible:outline hover:bg-yellow-500 focus-visible:outline-offset-2 focus-visible:outline-yellow-800"
+          >DeleAll</button
+        >
+        <button
+          type="button"
+          on:click={getscript}
+          class="relative -ml-px inline-flex items-center rounded-r-md text-white bg-yellow-800 px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-yellow-300 focus-visible:outline hover:bg-yellow-500 focus-visible:outline-offset-2 focus-visible:outline-yellow-800"
+          >🎮Script</button
+        >
+      </span>
+    </div>
   </div>
 
   <!-- Account Data Section -->
@@ -228,7 +284,7 @@
         </thead>
         <tbody>
           {#each currentData as item}
-            <tr class="border-t border-yellow-500/20 hover:bg-gray-700">
+            <tr class="border-t border-yellow-500/20 hover:bg-yellow-800">
               <td class="py-2 px-4">{getEmojiByLastUpdated(item.updatedAt)}</td>
               <td class="py-2 px-4 font-medium text-yellow-300">{item.account}</td>
               <td class="py-2 px-4 text-yellow-300">{item.rank}</td>
@@ -237,7 +293,7 @@
               <td class="py-2 px-4 text-yellow-300">{item.huge_type}</td>
               <td class="py-2 px-4 text-yellow-300">{item.egg}</td>
               <td class="py-2 px-4 text-yellow-200">{timeAgo(item.updatedAt)}</td>
-              <td class="py-2 px-4 text-yellow-200"><button type="button" class="rounded-md bg-yellow-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Del</button></td>
+              <td class="py-2 px-4 text-yellow-200"><button type="button" class="rounded-md bg-yellow-600 px-3.5 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-500 focus-visible:outline-offset-2 focus-visible:outline-yellow-600">Del</button></td>
             </tr>
           {/each}
         </tbody>
