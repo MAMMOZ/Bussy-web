@@ -84,7 +84,7 @@
 
 <div class="text-gray-200 min-h-screen p-8 bg-[#1a1a01]">
   <!-- Stats Section -->
-  <div class="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-6">
+  <div class="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-3 md:grid-cols-6">
     <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">
       <h3 class="text-white mb-2">Online</h3>
       <p class="text-white text-4xl font-bold">{onlineCount}</p>
@@ -131,7 +131,7 @@
 
 
 
-  <div class="grid grid-cols-2 gap-2 mb-8 sm:grid-cols-4 md:grid-cols-6">
+  <div class="grid grid-cols-2 gap-2 mb-8 sm:grid-cols-3 md:grid-cols-6">
     <div class="bg-[#222213] p-6 rounded-xl">
       <p class="text-sm font-bold flex items-center ">
         <span class="text-white px-3" id="last-updated-serven"
