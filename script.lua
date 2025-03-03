@@ -2,7 +2,7 @@ repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui")
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Main")
 
-wait(70)
+task.wait(70)
 
 local __script__host = "http://110.164.203.137:3000"
 local HttpService = game:GetService("HttpService")
