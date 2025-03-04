@@ -45,11 +45,11 @@ function getpet()
 
         for j, k in pairs(v) do
             if string.find(v.id, "^Huge") then
-                if k == 1 then
+                if j == "pt" and k == 1 then
                     found = "Gold"
-                elseif k == 2 then
+                elseif j == "pt" and k == 2 then
                     found = "Rainbow"
-                elseif k == true then
+                elseif j == "sh" then
                     found_sh = true
                 end
             end
