@@ -84,9 +84,24 @@ function getDia()
 end
 
 -- Inventory
+-- function getEgg()
+--     local eggCount = 0
+--     for i, v in pairs(result.Inventory.Misc) do
+--         print(v.id)
+--         if string.find(v.id, "^Huge") then
+--             -- print(i,v.id)
+--             -- return v.id
+--             eggCount = eggCount + 1
+--         end
+--     end
+--     return eggCount
+-- end
+
+-- Egg
 function getEgg()
     local eggCount = 0
-    for i, v in pairs(result.Inventory.Misc) do
+    for i, v in pairs(result.Inventory.Egg) do
+        print(v.id)
         if string.find(v.id, "^Huge") then
             -- print(i,v.id)
             -- return v.id
@@ -95,6 +110,7 @@ function getEgg()
     end
     return eggCount
 end
+
 
 
 
