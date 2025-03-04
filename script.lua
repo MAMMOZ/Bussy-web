@@ -101,7 +101,6 @@ end
 function getEgg()
     local eggCount = 0
     for i, v in pairs(result.Inventory.Egg) do
-        print(v.id)
         if string.find(v.id, "^Huge") then
             -- print(i,v.id)
             -- return v.id
