@@ -53,21 +53,33 @@
   }
 
   function getscript() {
-    const text = `
+  const text = `
     getgenv().time_m = 10
 
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MAMMOZ/Bussy-web/refs/heads/main/script.lua"))()
-    `;
+  `;
 
+  if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard
       .writeText(text)
-      .then(() => {
-        console.log("ข้อความถูกคัดลอกไปยังคลิปบอร์ดแล้ว!");
-      })
-      .catch((err) => {
-        console.error("ไม่สามารถคัดลอกข้อความได้: ", err);
-      });
+      .then(() => console.log("ข้อความถูกคัดลอกไปยังคลิปบอร์ดแล้ว!"))
+      .catch((err) => console.error("ไม่สามารถคัดลอกข้อความได้: ", err));
+  } else {
+    // Fallback method
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand("copy");
+      console.log("ข้อความถูกคัดลอกไปยังคลิปบอร์ดแล้ว!");
+    } catch (err) {
+      console.error("ไม่สามารถคัดลอกข้อความได้: ", err);
+    }
+    document.body.removeChild(textarea);
   }
+}
+
 
   async function deleall() {
     try {
