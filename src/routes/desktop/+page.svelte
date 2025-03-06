@@ -42,13 +42,13 @@
 
   $: {
     if (searchTerm) {
-      filteredData = currentData.filter((item) =>
+      currentData = currentData.filter((item) =>
         Object.values(item).some((value) =>
           String(value).toLowerCase().includes(searchTerm.toLowerCase())
         )
       );
     } else {
-      filteredData = currentData;
+      currentData = currentData;
     }
   }
 

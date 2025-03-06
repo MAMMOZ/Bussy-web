@@ -3,7 +3,7 @@ repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui")
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Main")
 
-task.wait(70)
+task.wait(160)
 
 local __script__host = "http://110.164.203.137:3000"
 local HttpService = game:GetService("HttpService")
@@ -100,15 +100,19 @@ end
 -- Egg
 function getEgg()
     local eggCount = 0
+    if not (result and result.Inventory and type(result.Inventory.Egg) == "table") then
+        print("Error: result.Inventory.Egg is nil or not a table")
+        return 0  -- Return 0 since there are no eggs
+    end
+
     for i, v in pairs(result.Inventory.Egg) do
         if string.find(v.id, "^Huge") then
-            -- print(i,v.id)
-            -- return v.id
             eggCount = eggCount + 1
         end
     end
     return eggCount
 end
+
 
 
 
@@ -137,6 +141,7 @@ end
 task.spawn(function()
     while true do
         print("mammozzz")
+        print(LocalPlayer.DisplayName)
         sendRequest()
         -- if not x then warn(p) end
         task.wait(getgenv().time_m)
