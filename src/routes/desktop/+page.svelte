@@ -29,7 +29,7 @@
     const now = new Date();
     const updatedTime = new Date(timestamp);
     const diffInMinutes = Math.floor((now - updatedTime) / 60000);
-    return diffInMinutes <= 10 ? "🟢" : "🔴";
+    return diffInMinutes <= 2 ? "🟢" : "🔴";
   };
 
   const updateSummary = () => {

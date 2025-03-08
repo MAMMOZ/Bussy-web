@@ -126,7 +126,7 @@ function sendRequest()
             ["Content-Type"] = "application/json"
         },
         Body = HttpService:JSONEncode({
-            ["account"] = LocalPlayer.DisplayName,
+            ["account"] = LocalPlayer.Name,
             ["rank"] = Rank,
             ["Rebirth"] = Rebirths,
             ["gem"] = getDia(),
