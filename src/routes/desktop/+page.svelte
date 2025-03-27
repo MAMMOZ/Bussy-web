@@ -5,12 +5,11 @@
   let offlineCount = 5;
   let lastUpdated = "ขณะนี้";
   let searchTerm = "";
-  let filteredData = [];
-  let currentData = [];
-  let summary = [];
+  let currentData: any[] = [];
+  let summary: any[] = [];
 
   // Function to display time ago
-  function timeAgo(date) {
+  function timeAgo(date: string | number | Date) {
     const seconds = Math.floor((Date.now() - new Date(date).getTime()) / 1000);
     
     if (seconds < 60) return `${seconds} วินาทีที่แล้ว`;
@@ -25,7 +24,7 @@
     return `${days} วันที่แล้ว`;
   }
 
-  const getEmojiByLastUpdated = (timestamp) => {
+  const getEmojiByLastUpdated = (timestamp: string | number | Date) => {
     const now = new Date();
     const updatedTime = new Date(timestamp);
     const diffInMinutes = Math.floor((now - updatedTime) / 60000);
@@ -100,6 +99,7 @@
   async function fetchBotData() {
     try {
       const response = await fetch(`http://110.164.203.137:3000/bot`, {
+      // const response = await fetch(`http://localhost:3000/bot`, {
         method: "POST", // ใช้ POST method
         headers: {
           "Content-Type": "application/json", // ระบุว่า body เป็น JSON
@@ -129,7 +129,7 @@
 
 <div class="text-gray-200 min-h-screen p-8 bg-[#1a1a01]">
   <!-- Stats Section -->
-  <div class="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-3 md:grid-cols-6">
+  <div class="grid grid-cols-2 gap-4 mb-8 sm:grid-cols-3 md:grid-cols-7">
     <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">
       <h3 class="text-white mb-2">Online</h3>
       <p class="text-white text-4xl font-bold">{onlineCount}</p>
@@ -143,7 +143,7 @@
     <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">
       <div class="flex justify-between mx-auto">
         <h3 class="text-white mb-2">Gems</h3>
-        <img class="w-10" src="https://db.biggames.io/submenu/economy.png?game=ps99" alt="" srcset="">
+        <img class="w-10" src="/gems.png" alt="" srcset="">
       </div>
       <p class="text-white text-4xl font-bold">{summary.total_gem}</p>
       <p class="text-white">Pure</p>
@@ -151,15 +151,23 @@
     <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">
       <div class="flex justify-between mx-auto">
         <h3 class="text-white mb-2">Huge</h3>
-        <img class="w-10" src="https://db.biggames.io/submenu/pets.png?game=ps99" alt="" srcset="">
+        <img class="w-10" src="/pets.png" alt="" srcset="">
       </div>
       <p class="text-white text-4xl font-bold">{summary.total_huge}</p>
       <p class="text-white">Each</p>
     </div>
     <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">
       <div class="flex justify-between mx-auto">
-        <h3 class="text-white mb-2">RAP</h3>
-        <img class="w-10" src="https://db.biggames.io/logo.svg?game=ps99" alt="" srcset="">
+        <h3 class="text-white mb-2">RAP (Huge)</h3>
+        <img class="w-10" src="/biggames.png" alt="" srcset="">
+      </div>
+      <p class="text-white text-4xl font-bold">{summary.rap}</p>
+      <p class="text-white">Gem</p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">
+      <div class="flex justify-between mx-auto">
+        <h3 class="text-white mb-2">RAP (Item)</h3>
+        <img class="w-10" src="/biggames.png" alt="" srcset="">
       </div>
       <p class="text-white text-4xl font-bold">{summary.rap}</p>
       <p class="text-white">Gem</p>
@@ -167,7 +175,7 @@
     <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">
       <div class="flex justify-between mx-auto">
         <h3 class="text-white mb-2">Egg</h3>
-        <img class="sm:w-auto w-9 h-10" src="https://db.biggames.io/_next/image?url=https%3A%2F%2Fbiggamesapi.io%2Fimage%2F17846766229&w=128&q=75" alt="" srcset="">
+        <img class="sm:w-auto w-9 h-10" src="/eggs.png" alt="" srcset="">
       </div>
       <p class="text-white text-4xl font-bold">{summary.total_egg}</p>
       <p class="text-white">Each</p>
@@ -179,7 +187,7 @@
   <div class="grid grid-cols-2 gap-2 mb-8 sm:grid-cols-3 md:grid-cols-6">
     <div class="bg-[#222213] p-6 rounded-xl">
       <p class="text-sm font-bold flex items-center ">
-        <span class="text-white px-3" id="last-updated-serven"
+        <span class="text-white px-3"
           >Shiny RB : {summary.Shiny_RB}</span
         >
       </p>
@@ -221,12 +229,190 @@
     </div>
   </div>
 
+
+  <div class="grid grid-cols-2 gap-2 mb-8 sm:grid-cols-3 md:grid-cols-7">
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Rainbow Mini Chest.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Rainbow_Mini_Chest}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Mini Chest.png" alt="" srcset="">
+        <span class="text-white px-3"
+        >: {summary.Mini_Chest}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Charm Stone.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Charm_Stone}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Diamond Gift Bag.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Diamond_Gift_Bag}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Secret Key.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Secret_Key}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Secret Key Upper Half.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Secret_Key_Upper_Half}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Void Key.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Void_Key}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Void Key Upper Half.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Void_Key_Upper_Half}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Tech Key.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Tech_Key}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Tech Key Upper Half.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Tech_Key_Upper_Half}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Crystal Key.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Crystal_Key}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Crystal Key Upper Half.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Crystal_Key_Upper_Half}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Arcade Token.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Arcade_Token}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Insta Plant Capsule.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Insta_Plant_Capsule}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Large Gift Bag.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Large_Gift_Bag}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Gift Bag.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Gift_Bag}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Void Spinny Wheel Ticket.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Void_Spinny_Wheel_Ticket}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Tech Spinny Wheel Ticket.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Tech_Spinny_Wheel_Ticket}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Spinny Wheel Ticket.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Spinny_Wheel_Ticket}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Seed Bag.png" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Seed_Bag}</span
+        >
+      </p>
+    </div>
+    <div class="bg-[#222213] p-6 rounded-xl">
+      <p class="text-sm font-bold flex items-center ">
+        <img class="w-12" src="/Diamond Plant Seed.webp" alt="" srcset="">
+        <span class="text-white px-3"
+          >: {summary.Diamond_Plant_Seed}</span
+        >
+      </p>
+    </div>
+    
+  </div>
+
   <div class="p-6">
     <div class="flex justify-end items-center">
       <span class="isolate inline-flex rounded-md shadow-sm">
         <button
           type="button"
           class="relative inline-flex items-center rounded-l-md text-white bg-yellow-800 px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-yellow-300 focus-visible:outline hover:bg-yellow-500 focus-visible:outline-offset-2 focus-visible:outline-yellow-800"
+          >💎 {summary.gem60} / 60s</button
+        >
+        <button
+          type="button"
+          class="relative -ml-px inline-flex items-center text-white bg-yellow-800 px-3 py-2 text-sm font-semibold ring-1 ring-inset ring-yellow-300 focus-visible:outline hover:bg-yellow-500 focus-visible:outline-offset-2 focus-visible:outline-yellow-800"
           >⚙️Setting</button
         >
         <button
