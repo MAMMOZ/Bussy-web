@@ -130,9 +130,9 @@ function getEgg()
     end
 
     for i, v in pairs(result.Inventory.Egg) do
-        if string.find(v.id, "^Huge") then
+        -- if string.find(v.id, "^Huge") or string.find(v.id, "^Gargantuan") then
             eggCount = eggCount + 1
-        end
+        -- end
     end
     return eggCount
 end
