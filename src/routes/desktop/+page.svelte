@@ -169,7 +169,7 @@
         <h3 class="text-white mb-2">RAP (Item)</h3>
         <img class="w-10" src="/biggames.png" alt="" srcset="">
       </div>
-      <p class="text-white text-4xl font-bold">{summary.rap}</p>
+      <p class="text-white text-4xl font-bold">{summary.total_key_value}</p>
       <p class="text-white">Gem</p>
     </div>
     <div class="bg-[#222213] p-6 rounded-xl border border-yellow-500/20 shadow-lg">

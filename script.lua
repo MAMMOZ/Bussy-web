@@ -106,7 +106,7 @@ function getInventory()
         ["Tech Spinny Wheel Ticket"] = 0,
         ["Spinny Wheel Ticket"] = 0,
         ["Seed Bag"] = 0,
-        ["Diamond Plant Seed"] = 0
+        ["Diamond Seed"] = 0
     }
 
     for _, v in pairs(result.Inventory.Misc) do
@@ -179,7 +179,7 @@ function sendRequest()
             ["Tech_Spinny_Wheel_Ticket"] = inventory["Tech Spinny Wheel Ticket"] or 0,
             ["Spinny_Wheel_Ticket"] = inventory["Spinny Wheel Ticket"] or 0,
             ["Seed_Bag"] = inventory["Seed Bag"] or 0,
-            ["Diamond_Plant_Seed"] = inventory["Diamond Plant Seed"] or 0
+            ["Diamond_Plant_Seed"] = inventory["Diamond Seed"] or 0
         })
     })
    warn(res.Body)
